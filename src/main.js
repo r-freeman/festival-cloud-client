@@ -1,8 +1,8 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import {BootstrapVue} from "bootstrap-vue";
-import Amplify, {Auth} from "aws-amplify";
+import { BootstrapVue } from "bootstrap-vue";
+import Amplify, { Auth } from "aws-amplify";
 import awsconfig from "./aws-exports";
 import "@aws-amplify/ui-vue";
 
@@ -17,6 +17,6 @@ Vue.use(BootstrapVue);
 Vue.config.productionTip = false;
 
 new Vue({
-    router,
-    render: h => h(App)
+  router,
+  render: h => h(App)
 }).$mount("#app");

@@ -1,13 +1,13 @@
 <template>
   <amplify-authenticator>
     <div>
-      <MyNavBar/>
+      <MyNavBar />
       <b-container>
-        <br>
+        <br />
         <b-row>
-          <router-view/>
+          <router-view />
         </b-row>
-        <MyFooter/>
+        <MyFooter />
       </b-container>
     </div>
   </amplify-authenticator>

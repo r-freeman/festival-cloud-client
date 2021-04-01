@@ -1,14 +1,16 @@
 <template>
-  <div>
-    <MyNavBar />
-    <b-container>
-      <br>
-      <b-row>
-        <router-view />
-      </b-row>
-      <MyFooter />
-    </b-container>
-  </div>
+  <amplify-authenticator>
+    <div>
+      <MyNavBar/>
+      <b-container>
+        <br>
+        <b-row>
+          <router-view/>
+        </b-row>
+        <MyFooter/>
+      </b-container>
+    </div>
+  </amplify-authenticator>
 </template>
 
 <script>

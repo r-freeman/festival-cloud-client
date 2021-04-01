@@ -1,10 +1,10 @@
 <template>
-<b-col>
-  <h2>Festival details</h2>
-  <table id="table-festival" class="table table-hover">
-    <tbody>
+  <b-col>
+    <h2>Festival details</h2>
+    <table id="table-festival" class="table table-hover">
+      <tbody>
       <tr>
-        <td><img :src="s3_url+festival.image_path" height="200px" /></td>
+        <td><img :src="festival.image_path" height="200px"/></td>
       </tr>
       <tr>
         <td width="20%">Title</td>
@@ -26,14 +26,15 @@
         <td>End</td>
         <td>{{ festival.end_date }}</td>
       </tr>
-    </tbody>
-  </table>
-  <p>
-    <router-link class="btn btn-default" :to="{ name: 'festivals_index' }">Cancel</router-link>
-    <router-link class="btn btn-warning" :to="{ name: 'festivals_edit', params: { id: festival._id }}">Edit</router-link>
-    <button class="btn btn-danger" @click="destroy()">Delete</button>
-  </p>
-</b-col>
+      </tbody>
+    </table>
+    <p>
+      <router-link class="btn btn-default" :to="{ name: 'festivals_index' }">Cancel</router-link>
+      <router-link class="btn btn-warning" :to="{ name: 'festivals_edit', params: { id: festival._id }}">Edit
+      </router-link>
+      <button class="btn btn-danger" @click="destroy()">Delete</button>
+    </p>
+  </b-col>
 </template>
 
 <script>
@@ -57,21 +58,21 @@ export default {
     getData() {
       console.log(this.$route.params.id);
       api.get(`/festivals/${this.$route.params.id}`)
-        .then(response => {
-          console.log(response);
-          this.festival = response.data
-        })
-        .catch(error => console.log(error))
+          .then(response => {
+            console.log(response);
+            this.festival = response.data
+          })
+          .catch(error => console.log(error))
     },
     destroy() {
       api.delete(`/festivals/${this.$route.params.id}`)
-        .then(response => {
-          console.log(response);
-          this.$router.push({
-            name: 'festivals_index'
-          });
-        })
-        .catch(error => console.log(error))
+          .then(response => {
+            console.log(response);
+            this.$router.push({
+              name: 'festivals_index'
+            });
+          })
+          .catch(error => console.log(error))
     }
   }
 };

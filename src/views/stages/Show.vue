@@ -4,7 +4,7 @@
   <table id="table-stage" class="table table-hover">
     <tbody>
       <tr>
-        <td><img :src="s3_url+stage.image_path" height="200px" /></td>
+        <td><img :src="stage.image_path" height="200px" /></td>
       </tr>
       <tr>
         <td width="20%">Title</td>

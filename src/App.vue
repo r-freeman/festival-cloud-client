@@ -1,6 +1,5 @@
 <template>
   <amplify-authenticator username-alias="email">
-    <amplify-sign-up slot="sign-up" :form-fields.prop="formFields" />
     <div>
       <MyNavBar />
       <b-container>
@@ -20,11 +19,6 @@ import MyFooter from "@/components/MyFooter.vue";
 
 export default {
   name: "App",
-  data() {
-    return {
-      formFields: [{ type: "email" }, { type: "password" }]
-    };
-  },
   components: {
     MyNavBar,
     MyFooter

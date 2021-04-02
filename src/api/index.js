@@ -5,13 +5,13 @@ const AWS_USER_POOLS_WEB_CLIENT_ID = awsmobile.aws_user_pools_web_client_id;
 const userId = localStorage.getItem(
   `CognitoIdentityServiceProvider.${AWS_USER_POOLS_WEB_CLIENT_ID}.LastAuthUser`
 );
-const accessToken = localStorage.getItem(
-  `CognitoIdentityServiceProvider.${AWS_USER_POOLS_WEB_CLIENT_ID}.${userId}.accessToken`
+const idToken = localStorage.getItem(
+  `CognitoIdentityServiceProvider.${AWS_USER_POOLS_WEB_CLIENT_ID}.${userId}.idToken`
 );
 
 export default axios.create({
   baseURL: "https://zy8hyxvb7h.execute-api.us-east-1.amazonaws.com/api/",
   headers: {
-    Authorization: `Bearer ${accessToken}`
+    Authorization: `Bearer ${idToken}`
   }
 });

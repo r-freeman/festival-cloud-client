@@ -11,11 +11,11 @@
       <th>End</th>
     </thead>
     <tbody>
-      <tr v-for="show in shows" :key="show._id">
+      <tr v-for="show in shows" :key="show.id">
         <td><router-link class="btn-link" :to="{ name: 'performers_show', params: { id: show.performer_id }}">{{ show.performer_title }}</router-link></td>
         <td><router-link class="btn-link" :to="{ name: 'festivals_show', params: { id: show.festival_id }}">{{ show.festival_title }}</router-link></td>
         <td>
-          <router-link class="btn-link" :to="{ name: 'shows_show', params: { id: show._id }}">{{ show.start_time }}</router-link>
+          <router-link class="btn-link" :to="{ name: 'shows_show', params: { id: show.id }}">{{ show.start_time }}</router-link>
         </td>
         <td>{{ show.end_time }}</td>
       </tr>

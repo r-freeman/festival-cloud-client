@@ -34,7 +34,7 @@
       >
       <router-link
         class="btn btn-warning"
-        :to="{ name: 'festivals_edit', params: { id: festival._id } }"
+        :to="{ name: 'festivals_edit', params: { id: festival.id } }"
         >Edit
       </router-link>
       <button class="btn btn-danger" @click="destroy()">Delete</button>

@@ -39,7 +39,7 @@
         <option disabled value="">Please select one</option>
         <option 
          v-for="festival in festivals" 
-         v-bind:value="{ _id: festival._id, title: festival.title }"
+         v-bind:value="{ id: festival.id, title: festival.title }"
         >{{ festival.title }}</option>
       </select>
     </div>
@@ -118,7 +118,7 @@ export default {
       formData.append('title', this.form.title);
       formData.append('description', this.form.description);
       formData.append('location', this.form.location);
-      formData.append('festival_id', this.form.festival._id);
+      formData.append('festival_id', this.form.festival.id);
       formData.append('festival_title', this.form.festival.title);
       
       api.put(`/stages/${this.$route.params.id}`, formData, {
@@ -162,7 +162,7 @@ export default {
           this.festivals = response.data
           
           this.form.festival = {
-            _id: this.stage.festival_id,
+            id: this.stage.festival_id,
             title: this.stage.festival_title,
           }
         })

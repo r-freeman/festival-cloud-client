@@ -10,9 +10,9 @@
       <th>Contact Phone</th>
     </thead>
     <tbody>
-      <tr v-for="performer in performers" :key="performer._id">
+      <tr v-for="performer in performers" :key="performer.id">
         <td>
-          <router-link class="btn-link" :to="{ name: 'performers_show', params: { id: performer._id }}">{{ performer.title }}</router-link>
+          <router-link class="btn-link" :to="{ name: 'performers_show', params: { id: performer.id }}">{{ performer.title }}</router-link>
         </td>
         <td>{{ performer.contact_email }}</td>
         <td>{{ performer.contact_phone }}</td>

@@ -39,7 +39,7 @@
         <option disabled value="">Please select one</option>
         <option 
          v-for="festival in festivals" 
-         v-bind:value="{ _id: festival._id, title: festival.title }"
+         v-bind:value="{ id: festival.id, title: festival.title }"
         >{{ festival.title }}</option>
       </select>
     </div>

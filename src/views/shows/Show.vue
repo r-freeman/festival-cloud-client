@@ -23,7 +23,7 @@
   </table>
   <p>
     <router-link class="btn btn-default" :to="{ name: 'shows_index' }">Cancel</router-link>
-    <router-link class="btn btn-warning" :to="{ name: 'shows_edit', params: { id: show._id }}">Edit</router-link>
+    <router-link class="btn btn-warning" :to="{ name: 'shows_edit', params: { id: show.id }}">Edit</router-link>
     <button class="btn btn-danger" @click="destroy()">Delete</button>
   </p>
 </b-col>

@@ -11,9 +11,9 @@
       <th>End</th>
     </thead>
     <tbody>
-      <tr v-for="festival in festivals" :key="festival._id">
+      <tr v-for="festival in festivals" :key="festival.id">
         <td>
-          <router-link class="btn-link" :to="{ name: 'festivals_show', params: { id: festival._id }}">{{ festival.title }}</router-link>
+          <router-link class="btn-link" :to="{ name: 'festivals_show', params: { id: festival.id }}">{{ festival.title }}</router-link>
         </td>
         <td>{{ festival.city }}</td>
         <td>{{ festival.start_date }}</td>

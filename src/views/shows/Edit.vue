@@ -9,11 +9,11 @@
       <label for="start_time" class="col-md-3 control-label">Start</label>
       <div class="col-md-6">
         <input
-          type="text"
-          class="form-control"
-          id="start_time"
-          name="start_time"
-          v-model="form.start_time"
+            type="datetime-local"
+            class="form-control"
+            id="start_time"
+            name="start_time"
+            v-model="form.start_time"
         />
       </div>
       <div v-if="formErrors.start_time" class="col-md-3 error">
@@ -23,13 +23,13 @@
     <div class="form-group">
       <label for="end_time" class="col-md-3 control-label">End</label>
       <div class="col-md-6">
-        <textarea
-          id="end_time"
-          name="end_time"
-          v-model="form.end_time"
-          rows="4"
-          cols="50"
-        ></textarea>
+        <input
+            type="datetime-local"
+            class="form-control"
+            id="end_time"
+            name="end_time"
+            v-model="form.end_time"
+        />
       </div>
       <div v-if="formErrors.end_time" class="col-md-3 error">
         {{ formErrors.end_time.message }}
@@ -41,10 +41,9 @@
         <select v-model="form.performer" :required="true">
           <option disabled value="">Please select one</option>
           <option
-            v-for="performer in performers"
-            v-bind:value="{ _id: performer._id, title: performer.title }"
-            >{{ performer.title }}
-          </option>
+              v-for="performer in performers"
+              v-bind:value="{ id: performer.id, title: performer.title }"
+          >{{ performer.title }}</option>
         </select>
       </div>
       <div v-if="formErrors.performer" class="col-md-3 error">
@@ -58,7 +57,7 @@
           <option disabled value="">Please select one</option>
           <option
             v-for="festival in festivals"
-            v-bind:value="{ _id: festival._id, title: festival.title }"
+            v-bind:value="{ id: festival.id, title: festival.title }"
             >{{ festival.title }}
           </option>
         </select>
@@ -101,6 +100,8 @@ export default {
   },
   mounted() {
     this.getData();
+    this.getFestivals();
+    this.getPerformers();
   },
   methods: {
     getData() {
@@ -118,14 +119,14 @@ export default {
     },
 
     submitForm() {
-      let formData = {
-        start_time: this.form.start_time,
-        end_time: this.form.end_time,
-        performer_id: this.form.performer._id,
-        performer_title: this.form.performer.title,
-        festival_id: this.form.festival._id,
-        festival_title: this.form.festival.title
-      };
+      let formData = new FormData();
+
+      formData.append('start_time', this.form.start_time);
+      formData.append('end_time', this.form.end_time);
+      formData.append('performer_id', this.form.performer.id);
+      formData.append('performer_title', this.form.performer.title);
+      formData.append('festival_id', this.form.festival.id);
+      formData.append('festival_title', this.form.festival.title);
 
       api
         .put(`/shows/${this.$route.params.id}`, formData)
@@ -150,7 +151,7 @@ export default {
           console.log(response);
           this.festivals = response.data;
           this.form.festival = {
-            _id: this.stage.festival_id,
+            id: this.stage.festival_id,
             title: this.stage.festival_title
           };
         })
@@ -163,7 +164,7 @@ export default {
           console.log(response);
           this.performers = response.data;
           this.form.performer = {
-            _id: this.stage.performer_id,
+            id: this.stage.performer_id,
             title: this.stage.performer_title
           };
         })

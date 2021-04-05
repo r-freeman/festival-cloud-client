@@ -28,9 +28,9 @@
     <div class="col-md-6">
       <select v-model="form.performer" :required="true">
         <option disabled value="">Please select one</option>
-        <option 
-         v-for="performer in performers" 
-         v-bind:value="{ _id: performer._id, title: performer.title }"
+        <option
+         v-for="performer in performers"
+         v-bind:value="{ id: performer.id, title: performer.title }"
         >{{ performer.title }}</option>
       </select>
     </div>
@@ -43,9 +43,9 @@
     <div class="col-md-6">
       <select v-model="form.festival" :required="true">
         <option disabled value="">Please select one</option>
-        <option 
-         v-for="festival in festivals" 
-         v-bind:value="{ _id: festival._id, title: festival.title }"
+        <option
+         v-for="festival in festivals"
+         v-bind:value="{ id: festival.id, title: festival.title }"
         >{{ festival.title }}</option>
       </select>
     </div>
@@ -89,15 +89,15 @@ export default {
   methods: {
 
     submitForm() {
-      let formData = {
-        start_time: this.form.start_time,
-        end_time: this.form.end_time,
-        performer_id: this.form.performer._id,
-        performer_title: this.form.performer.title,
-        festival_id: this.form.festival._id,
-        festival_title: this.form.festival.title
-      }
-      
+      let formData = new FormData();
+
+      formData.append('start_time', this.form.start_time);
+      formData.append('end_time', this.form.end_time);
+      formData.append('performer_id', this.form.performer.id);
+      formData.append('performer_title', this.form.performer.title);
+      formData.append('festival_id', this.form.festival.id);
+      formData.append('festival_title', this.form.festival.title);
+
       api.post('/shows/', formData)
         .then(response => {
           console.log(response);

@@ -10,9 +10,9 @@
       <th>Festival</th>
     </thead>
     <tbody>
-      <tr v-for="stage in stages" :key="stage._id">
+      <tr v-for="stage in stages" :key="stage.id">
         <td>
-          <router-link class="btn-link" :to="{ name: 'stages_show', params: { id: stage._id }}">{{ stage.title }}</router-link>
+          <router-link class="btn-link" :to="{ name: 'stages_show', params: { id: stage.id }}">{{ stage.title }}</router-link>
         </td>
         <td>{{ stage.location }}</td>
         <td><router-link class="btn-link" :to="{ name: 'festivals_show', params: { id: stage.festival_id }}">{{ stage.festival_title }}</router-link></td>

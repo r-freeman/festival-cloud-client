@@ -39,7 +39,7 @@
       >
       <router-link
         class="btn btn-warning"
-        :to="{ name: 'stages_edit', params: { id: stage._id } }"
+        :to="{ name: 'stages_edit', params: { id: stage.id } }"
         >Edit</router-link
       >
       <button class="btn btn-danger" @click="destroy()">Delete</button>
